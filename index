@@ -1,1 +1,107 @@
 
+```html
+<html>
+<head>
+<style>
+  .calculator {
+    border: 1px solid black;
+    width: 300px;
+    height: 400px;
+    margin: auto;
+    padding: 10px;
+    background-color: lightgray;
+  }
+
+  .display {
+    border: 1px solid black;
+    width: 280px;
+    height: 50px;
+    margin: 10px;
+    padding: 10px;
+    font-size: 20px;
+    text-align: right;
+    background-color: white;
+  }
+
+  .button {
+    border: 1px solid black;
+    width: 60px;
+    height: 60px;
+    margin: 10px;
+    padding: 10px;
+    font-size: 20px;
+    text-align: center;
+    background-color: white;
+  }
+</style>
+</head>
+<body>
+<div class="calculator">
+  <div class="display" id="display">0</div>
+  <div class="button" id="clear" onclick="clearDisplay()">C</div>
+  <div class="button" id="divide" onclick="appendOperator('/')">/</div>
+  <div class="button" id="multiply" onclick="appendOperator('*')">x</div>
+  <div class="button" id="seven" onclick="appendNumber(7)">7</div>
+  <div class="button" id="eight" onclick="appendNumber(8)">8</div>
+  <div class="button" id="nine" onclick="appendNumber(9)">9</div>
+  <div class="button" id="subtract" onclick="appendOperator('-')">-</div>
+  <div class="button" id="four" onclick="appendNumber(4)">4</div>
+  <div class="button" id="five" onclick="appendNumber(5)">5</div>
+  <div class="button" id="six" onclick="appendNumber(6)">6</div>
+  <div class="button" id="add" onclick="appendOperator('+')">+</div>
+  <div class="button" id="one" onclick="appendNumber(1)">1</div>
+  <div class="button" id="two" onclick="appendNumber(2)">2</div>
+  <div class="button" id="three" onclick="appendNumber(3)">3</div>
+  <div class="button" id="equal" onclick="calculateResult()">=</div>
+  <div class="button" id="zero" onclick="appendNumber(0)" style = "width:140px">0</div>
+  <div class="button" id = "dot" onclick = "appendDot()">.</div>
+
+<script>
+
+var display = document.getElementById("display");
+var expression = "";
+
+function clearDisplay() {
+  display.innerHTML = "0";
+  expression = "";
+}
+
+function appendNumber(number) {
+  if (display.innerHTML == "0") {
+    display.innerHTML = number;
+    expression += number;
+  } else {
+    display.innerHTML += number;
+    expression += number;
+  }
+}
+
+function appendOperator(operator) {
+  if (expression != "") {
+    display.innerHTML += operator;
+    expression += operator;
+  }
+}
+
+function appendDot() {
+ if (expression != "" && display.innerHTML.indexOf(".") == -1) {
+   display.innerHTML += ".";
+   expression += ".";
+ }
+}
+
+function calculateResult() {
+ if (expression != "") {
+   var result = eval(expression);
+   display.innerHTML = result;
+   expression = result.toString();
+ }
+}
+
+</script>
+
+</body>
+</html>
+
+
+```
